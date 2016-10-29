@@ -51,7 +51,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder> {
         TimeLineModel timeLineModel = mFeedList.get(position);
 
         holder.name.setText("name：" + timeLineModel.getName() + "    age：" + timeLineModel.getAge());
-
+        holder.mTimelineView.initLine(getItemViewType(position), "18.10");
     }
 
     @Override

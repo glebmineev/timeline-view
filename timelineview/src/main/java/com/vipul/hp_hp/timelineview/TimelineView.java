@@ -48,9 +48,6 @@ public class TimelineView extends View {
         typedArray.recycle();
 
         if(mMarker == null) {
-            TextDrawable.IBuilder mDrawableBuilder = TextDrawable.builder()
-                    .rect();
-            mMarker = mDrawableBuilder.build("12.10", Color.WHITE);
             mMarkerRing = mContext.getResources().getDrawable(R.drawable.marker);
         }
     }
@@ -199,7 +196,11 @@ public class TimelineView extends View {
         initDrawable();
     }
 
-    public void initLine(int viewType) {
+    public void initLine(int viewType, String date) {
+
+        TextDrawable.IBuilder mDrawableBuilder = TextDrawable.builder()
+                .rect();
+        mMarker = mDrawableBuilder.build(date, Color.WHITE);
 
         if(viewType == LineType.BEGIN) {
             setStartLine(null);

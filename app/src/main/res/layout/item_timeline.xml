@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="horizontal"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+    <com.vipul.hp_hp.timelineview.TimelineView
+        android:id="@+id/time_marker"
+        android:layout_width="72dp"
+        android:layout_height="match_parent"
+        app:marker_size="10dp"
+        app:line_size="0.5dp"
+        app:line="@color/pesColor"
+        android:background="@color/cardview_light_background"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_margin="0dp"
+        android:layout_gravity="center_vertical"
+        android:background="@color/cardview_light_background">
+
+        <TextView
+            android:id="@+id/tx_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Random"
+            android:layout_marginLeft="0dp"
+            android:layout_gravity="center_vertical"/>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.vipul.hp_hp.timelineview;
+package ru.spb.sigma.timelineview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,15 +7,18 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.View;
+
+import com.vipul.hp_hp.timelineview.ColorGenerator;
+import com.vipul.hp_hp.timelineview.LineType;
+import com.vipul.hp_hp.timelineview.R;
 
 /**
  * Created by HP-HP on 05-12-2015.
  */
 public class TimelineView extends View {
 
-    private TextDrawable mMarker;
+    private SimpleTextDrawable mMarker;
     private Drawable mMarkerRing;
     private Drawable mStartLine;
     private Drawable mEndLine;
@@ -34,10 +37,8 @@ public class TimelineView extends View {
         init(attrs);
     }
 
-    private ColorGenerator mColorGenerator = ColorGenerator.MATERIAL;
-
     private void init(AttributeSet attrs) {
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs,R.styleable.timeline_style);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.timeline_style);
         //mMarker = typedArray.getDrawable(R.styleable.timeline_style_marker);
         mStartLine = typedArray.getDrawable(R.styleable.timeline_style_line);
         mEndLine = typedArray.getDrawable(R.styleable.timeline_style_line);
@@ -89,14 +90,11 @@ public class TimelineView extends View {
 
         int markSize = Math.min(mMarkerSize, Math.min(cWidth, cHeight));
 
-
+        int stdMarginPixelSize = getResources().getDimensionPixelSize(R.dimen.std_margin);
+        int stdMargin2PixelSize = getResources().getDimensionPixelSize(R.dimen.std_margin_2);
         if(mMarkerInCenter) { //Marker in center is true
-            float rightPaddingDps = 16;
-            Float rightPaddingPxs = rightPaddingDps * getResources().getDisplayMetrics().density;
-            float leftPaddingDps = 15;
-            Float leftPaddingPxs = leftPaddingDps * getResources().getDisplayMetrics().density;
             if(mMarkerRing != null) {
-                mMarkerRing.setBounds(((width/2) - (markSize/2) + leftPaddingPxs.intValue()),(height/2) - (markSize/2), (width/2) + (markSize/2) + rightPaddingPxs.intValue(),(height/2) + (markSize/2));
+                mMarkerRing.setBounds(((width/2) - (markSize/2) + stdMargin2PixelSize),(height/2) - (markSize/2), (width/2) + (markSize/2) + stdMarginPixelSize,(height/2) + (markSize/2));
                 mBounds = mMarkerRing.getBounds();
             }
 
@@ -136,9 +134,7 @@ public class TimelineView extends View {
             }
 
             if (mMarker != null) {
-                float rightPaddingDps = 16;
-                Float rightPaddingPxs = rightPaddingDps * getResources().getDisplayMetrics().density;
-                mMarker.setBounds(rightPaddingPxs.intValue(), mBounds.top - 10, convertDPSToPxs(45F).intValue(), mBounds.bottom + 10);
+                mMarker.setBounds(stdMarginPixelSize, mBounds.top - 10, convertDPSToPxs(45F).intValue(), mBounds.bottom + 10);
             }
 
 
@@ -171,7 +167,7 @@ public class TimelineView extends View {
         }
     }
 
-    public void setMarker(TextDrawable marker) {
+    public void setMarker(SimpleTextDrawable marker) {
         mMarker = marker;
         initDrawable();
     }
@@ -198,8 +194,7 @@ public class TimelineView extends View {
 
     public void initLine(int viewType, String date) {
 
-        TextDrawable.IBuilder mDrawableBuilder = TextDrawable.builder()
-                .rect();
+        SimpleTextDrawable.IBuilder mDrawableBuilder = SimpleTextDrawable.builder();
         mMarker = mDrawableBuilder.build(date, Color.WHITE);
 
         if(viewType == LineType.BEGIN) {
@@ -211,7 +206,7 @@ public class TimelineView extends View {
             setEndLine(null);
         }
 
-        initDrawable();
+        //initDrawable();
     }
 
     public static int getTimeLineViewType(int position, int total_size) {

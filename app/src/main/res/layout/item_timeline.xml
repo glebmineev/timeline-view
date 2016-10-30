@@ -1,45 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:orientation="horizontal"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-    android:background="@color/cardview_light_background">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_light_background"
+    android:orientation="horizontal">
 
-    <com.vipul.hp_hp.timelineview.TimelineView
+    <ru.spb.sigma.timelineview.TimelineView
         android:id="@+id/time_marker"
         android:layout_width="72dp"
         android:layout_height="match_parent"
-        app:marker_size="10dp"
-        app:line_size="0.5dp"
-        app:line="@color/pesColor"/>
+        app:markerInCenter="true"
+        app:line="@color/pesColor"
+        app:line_size="1dp"
+        app:marker_size="10dp" />
 
-<!--    <android.support.v7.widget.CardView
+    <android.support.v7.widget.CardView
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_margin="0dp"
         android:layout_gravity="center_vertical"
-        android:background="@color/cardview_light_background">-->
+        android:background="@color/cardview_light_background"
+        app:cardElevation="0dp">
 
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_margin="16dp"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical">
-        <TextView
-            android:id="@+id/tx_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Random"
-            android:layout_marginLeft="0dp"
-            android:layout_gravity="center_vertical"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/pesColor" />
-    </LinearLayout>
-    <!--</android.support.v7.widget.CardView>-->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:gravity="center_vertical"
+            android:weightSum="100">
+
+            <TableRow>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="90">
+                    <TextView
+                        android:id="@+id/history_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:gravity="center_vertical|start"
+                        android:text="Random" />
+                    <TextView
+                        android:id="@+id/history_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:gravity="center_vertical|start"
+                        android:text="Random" />
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:gravity="center_vertical|end"
+                    android:src="@drawable/ic_info_outline_white_24dp"
+                    android:tint="@color/pesColor" />
+            </TableRow>
+
+        </TableLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="100"
+            android:background="@color/pesColor" />
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

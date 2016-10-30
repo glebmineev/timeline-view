@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="simple_timeline_style" >
+        <attr name="marker_" format="color|reference"/>
+        <attr name="line_" format="color|reference"/>
+        <attr name="marker_size_" format="dimension"/>
+        <attr name="line_size_" format="dimension"/>
+    </declare-styleable>
+</resources>

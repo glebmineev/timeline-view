@@ -1,22 +1,23 @@
 package com.vipul.hp_hp.timeline;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.vipul.hp_hp.timelineview.TimelineView;
+import ru.spb.sigma.timelineview.TimelineView;
 
 /**
  * Created by HP-HP on 05-12-2015.
  */
 public class TimeLineViewHolder extends RecyclerView.ViewHolder {
-    public TextView name;
+    public TextView history_month;
+    public TextView history_pay;
     public  TimelineView mTimelineView;
 
     public TimeLineViewHolder(View itemView, int viewType) {
         super(itemView);
-        name = (TextView) itemView.findViewById(R.id.tx_name);
+        history_month = (TextView) itemView.findViewById(R.id.history_month);
+        history_pay = (TextView) itemView.findViewById(R.id.history_pay);
         mTimelineView = (TimelineView) itemView.findViewById(R.id.time_marker);
     }
 }

@@ -2,11 +2,10 @@ package com.vipul.hp_hp.timeline;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.vipul.hp_hp.timelineview.TimelineView;
+import ru.spb.sigma.timelineview.TimelineView;
 
 import java.util.List;
 
@@ -50,7 +49,8 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder> {
 
         TimeLineModel timeLineModel = mFeedList.get(position);
 
-        holder.name.setText("name：" + timeLineModel.getName() + "    age：" + timeLineModel.getAge());
+        holder.history_month.setText("Июль 2016");
+        holder.history_pay.setText("68.32 RUR");
         holder.mTimelineView.initLine(getItemViewType(position), "18.10");
     }
 
